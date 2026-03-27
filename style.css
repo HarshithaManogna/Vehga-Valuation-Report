@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --vehga-teal: #009688;
+    --vehga-dark: #1a1a1a;
+    --vehga-gray: #f5f5f5;
+    --vehga-border: #e5e7eb;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.report-page {
+    background-color: white;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    padding-bottom: 1.5rem; /* Reduced padding to accommodate footer in flex flow */
+    width: 210mm;
+    height: 297mm;
+    background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    page-break-after: always;
+    break-after: page;
+}
+
+.report-page::before {
+    content: "VEHGA CERTIFIED";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 120px;
+    font-weight: 900;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+    white-space: nowrap;
+    color: #f9f9f9;
+}
+
+.page-content {
+    flex: 1;
+    overflow: visible;
+    padding-bottom: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.page-footer {
+    margin-top: auto; /* Push to bottom of flex container */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 1rem;
+    font-size: 9px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    z-index: 10;
+}
+
+@media print {
+    body {
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+    .report-page {
+        box-shadow: none;
+        margin: 0;
+        padding: 2.5rem;
+        padding-bottom: 1.5rem;
+        width: 210mm;
+        height: 297mm;
+        display: flex;
+        flex-direction: column;
+        page-break-after: always;
+    }
+    .print\:hidden {
+        display: none !important;
+    }
+}
